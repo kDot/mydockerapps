@@ -1,1 +1,1 @@
-# srv
+Repository for server foo.
