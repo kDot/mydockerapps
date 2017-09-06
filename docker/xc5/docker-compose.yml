@@ -1,0 +1,17 @@
+version: '3'
+services:
+  xc5hub:
+    image: library/nginx
+    container_name: xc5hub
+    restart: unless-stopped
+    environment:
+      VIRTUAL_HOST: xc5hub.de, www.xc5hub.de
+      LETSENCRYPT_HOST: xc5hub.de, www.xc5hub.de
+      LETSENCRYPT_EMAIL: k-Laus@gmx.net
+    expose:
+      - "80"
+      - "443"
+networks:
+   default:
+     external:
+       name: nginx-proxy

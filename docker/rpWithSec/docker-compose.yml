@@ -29,6 +29,8 @@ services:
       - /srv/www/certs:/etc/nginx/certs:ro
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - /srv/www/nginx.tmpl:/etc/docker-gen/templates/nginx.tmpl:ro
+    environment:
+      ENABLE_IPV6: "true"
 
   nginx-letsencrypt:
     image: jrcs/letsencrypt-nginx-proxy-companion
