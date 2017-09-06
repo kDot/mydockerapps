@@ -11,6 +11,8 @@ services:
     expose:
       - "80"
       - "443"
+    volumes:
+      - /srv/de.xc5hub/:/usr/share/nginx/html:ro
 networks:
    default:
      external:
