@@ -1,0 +1,19 @@
+version: '3'
+services:
+  fgi-rp:
+    image: library/nginx
+    container_name: fgi.rp
+    restart: unless-stopped
+    environment:
+      VIRTUAL_HOST: fgi.xc5hub.de, www.fgi.xc5hub.de
+      LETSENCRYPT_HOST: fgi.xc5hub.de, www.fgi.xc5hub.de
+      LETSENCRYPT_EMAIL: k-Laus@gmx.net
+    expose:
+      - "80"
+      - "443"
+    volumes:
+      - /srv/fgi.rp/conf.d:/etc/nginx/conf.d:ro
+networks:
+   default:
+     external:
+       name: nginx-proxy
