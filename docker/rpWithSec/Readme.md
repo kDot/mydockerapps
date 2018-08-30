@@ -1,1 +1,1 @@
-Have to copy a nginx.tmpl from somewhere to get it working (search the internet for template)
+Have to copy a nginx.tmpl to /srv/www/nginx.tmpl from somewhere (internet) to get it working
