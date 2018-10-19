@@ -1,18 +1,16 @@
 version: '3'
 services:
-  fgi-rp:
+  xc5hub:
     image: library/nginx
-    container_name: fgi.rp
+    container_name: test8196
     restart: unless-stopped
     environment:
-      VIRTUAL_HOST: fgi.xc5hub.de, www.fgi.xc5hub.de
-      LETSENCRYPT_HOST: fgi.xc5hub.de, www.fgi.xc5hub.de
+      VIRTUAL_HOST: test8196.khome.2ng.de, www.test8196.khome.2ng.de
+      LETSENCRYPT_HOST: test8196.khome.2ng.de, www.test8196.khome.2ng.de
       LETSENCRYPT_EMAIL: k-Laus@gmx.net
     expose:
       - "80"
       - "443"
-    volumes:
-      - /srv/fgi.rp/conf.d:/etc/nginx/conf.d:ro
 networks:
    default:
      external:

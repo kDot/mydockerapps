@@ -1,0 +1,40 @@
+version: '3.4'
+services:
+  nc-db:
+    image: mariadb
+    container_name: nc-db
+    volumes:
+      - ncdb:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=somerootpassword
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+      - MYSQL_PASSWORD=somepassword
+    restart: unless-stopped
+  nc:
+    depends_on:
+      - nc-db
+    image: nextcloud
+    container_name: nextcloud
+    links:
+      - nc-db
+    environment:
+      - VIRTUAL_HOST=nc.khome.2ng.de
+      - LETSENCRYPT_HOST=nc.khome.2ng.de
+      - LETSENCRYPT_EMAIL=k-Laus@gmx.net
+    volumes:
+      - ncdata:/var/www/html
+    restart: unless-stopped
+    expose:
+     - "80"
+     - "443"
+networks:
+   default:
+     external:
+       name: nginx-proxy
+volumes:
+        ncdata:
+                name: ncdata
+        ncdb:
+                name: ncdb
+  
