@@ -9,4 +9,13 @@ services:
       - "23080:8080" # The Web UI (enabled by --api)
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock # So that Traefik can listen to the Docker events
-
+  portainer:
+    image: portainer:portainer
+    name: portainer
+    environment:
+      - VIRTUAL_HOST=pt.khome.2ng.de
+      - LETSENCRYPT_HOST=nc.khome.2ng.de
+      - LETSENCRYPT_EMAIL=k-Laus@gmx.net
+    volumes:
+      - /var/run/docker.socks:/var/run/docker.socks
+      - portainer:/data
