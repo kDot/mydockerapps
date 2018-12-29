@@ -1,0 +1,23 @@
+version: '3.4'
+services:
+        mailpile-k:
+                image: rroemhild/mailpile 
+                volumes:
+                        - mpkdata:/root/.local/share/Mailpile
+                        - mpkgpg:/root/.gnupg
+                restart: unless-stopped
+                environment:
+                        - VIRTUAL_HOST=mkp.khome.2ng.de
+                        - LETSENCRYPT_HOST=mkp.khome.2ng.de
+                        - LETSENCRYPT_EMAIL=k-Laus@gmx.net
+                expose:
+                        - "33411"
+networks:
+        default:
+                external:
+                        name: nginx-proxy
+volumes:
+        mpkdata: 
+                name: mpkdata
+        mpkgpg:
+                name: mpkgpg
