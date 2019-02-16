@@ -2,7 +2,7 @@ version: '3.4'
 services:
   nc-db:
     image: mariadb
-    container_name: nc-db
+    container_name: nextcloud-db
     volumes:
       - ncdb:/var/lib/mysql
     environment:
