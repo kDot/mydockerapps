@@ -5,8 +5,8 @@ services:
     container_name: test8196
     restart: unless-stopped
     environment:
-      VIRTUAL_HOST: test8196.khome.2ng.de, www.test8196.khome.2ng.de
-      LETSENCRYPT_HOST: test8196.khome.2ng.de, www.test8196.khome.2ng.de
+      VIRTUAL_HOST: test8196.${domain}, www.test8196.${domain}
+      LETSENCRYPT_HOST: test8196.${domain}, www.test8196.${domain}
       LETSENCRYPT_EMAIL: k-Laus@gmx.net
     expose:
       - "80"
