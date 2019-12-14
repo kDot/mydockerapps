@@ -31,6 +31,7 @@ services:
       - /srv/www/nginx.tmpl:/etc/docker-gen/templates/nginx.tmpl:ro
     environment:
       ENABLE_IPV6: "true"
+      SSL_POLICY: "Mozilla-Modern"
 
   nginx-letsencrypt:
     image: jrcs/letsencrypt-nginx-proxy-companion

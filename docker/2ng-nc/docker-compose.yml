@@ -19,8 +19,8 @@ services:
     links:
       - nc-db
     environment:
-      - VIRTUAL_HOST=nc.khome.2ng.de
-      - LETSENCRYPT_HOST=nc.khome.2ng.de
+      - VIRTUAL_HOST=nc.khome.2ng.de,nc.heuschild.de,drive.heuschild.de
+      - LETSENCRYPT_HOST=nc.khome.2ng.de,nc.heuschild.de,drive.heuschild.de
       - LETSENCRYPT_EMAIL=k-Laus@gmx.net
     volumes:
       - ncdata:/var/www/html
@@ -28,6 +28,19 @@ services:
     expose:
      - "80"
      - "443"
+  nc-es:
+    image: dsteinkopf/elasticsearch-ingest-attachment
+    container_name: nextcloud-elasticsearch
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - nces:/usr/share/elasticsearch/data
 networks:
    default:
      external:
@@ -37,4 +50,5 @@ volumes:
                 name: ncdata
         ncdb:
                 name: ncdb
-  
+        nces:
+                name: nces
